@@ -6,10 +6,6 @@ public class Message{
     private String messageId;
     private String content;
     private Date date;
-
-    public Message(String messageId){
-        this.messageId = messageId;
-    }
     
     public Message(String messageId, String content){
         setMessageId(messageId);
@@ -42,6 +38,6 @@ public class Message{
     }
 
     public String toString(){
-        return "Message [messageID= " + messageId + ", content=" + content + ", created=" + date + "]";
+        return "Message [messageID=" + messageId + ", content=" + content + ", created=" + date + "]";
     }
 }
