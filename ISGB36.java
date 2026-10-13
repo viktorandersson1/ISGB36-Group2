@@ -1,7 +1,7 @@
 public class ISGB36 {
     
-    public void main(){
-
+    public static void main(){
+        
         
     }
 
