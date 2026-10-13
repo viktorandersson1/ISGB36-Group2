@@ -1,18 +1,21 @@
 import java.util.Date;
 
 public class Message{
+
+    //Creates values 
     private String messageId;
     private String content;
     private Date date;
+
+    public Message(String messageId){
+        this.messageId = messageId;
+    }
     
-    public Message(String messageID, String content){
-        setMessageId(messageID);
+    public Message(String messageId, String content){
+        setMessageId(messageId);
         setContent(content);
         date = new Date();
     }
-
-
-
 
     public String getMessageId(){
         return messageId;
