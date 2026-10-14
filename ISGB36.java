@@ -11,7 +11,7 @@ public class ISGB36 {
         System.out.println(u1);
 
         u1.addMessage(m1);
-        System.out.println(u1 + " :" + m1);
+        //System.out.println(u1 + " :" + m1);
 
 
 
