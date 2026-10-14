@@ -6,12 +6,17 @@ public class User extends Person{
     private String password;
     private Message[] messages;
 
+    public User(){super();}
+
+    //Create a constructor including the id and isSignedIn when there is a constructor in Person.
+
     public User(String name, String email, String password){
         this.name=name;
         this.email=email;
         this.password=password;
         messages = new Message[0];
     }
+
 
     public void addMessage(Message m){
         messages = Arrays.copyOf(messages, messages.length+1);
