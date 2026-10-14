@@ -13,8 +13,6 @@ public class User extends Person{
         messages = new Message[0];
     }
 
-
-
     public void addMessage(Message m){
         messages = Arrays.copyOf(messages, messages.length+1);
         messages[messages.length-1] = m;
@@ -27,6 +25,7 @@ public class User extends Person{
         }
         return text;
     }
+    
     
     public String getName(){
         return name;
