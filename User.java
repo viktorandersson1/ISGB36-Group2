@@ -26,6 +26,9 @@ public class User extends Person{
         return text;
     }
     
+    public Message viewAllMessage(){
+        return null;
+    }
     
     public String getName(){
         return name;
