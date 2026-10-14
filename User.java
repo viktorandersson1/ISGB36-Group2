@@ -6,6 +6,11 @@ public class User extends Person{
     private String password;
     private Message[] messages;
 
+    public User(){super();}
+
+    //Create a constructor including the id and isSignedIn when there is a constructor in Person.
+
+
     public User(String name, String email, String password){
         this.name=name;
         this.email=email;
@@ -14,19 +19,18 @@ public class User extends Person{
     }
 
 
-
     public void addMessage(Message m){
         messages = Arrays.copyOf(messages, messages.length+1);
         messages[messages.length-1] = m;
     }
 
-    public String toStrMessages(Message[] messages){
-        String text = "";
-        for(Message m: messages){
-            text += "\t"+m+" \n ";
-        }
-        return text;
+    
+    
+    public Message viewAllMessage(){  // Has to return a Message []
+        return null;
     }
+
+
     
     public String getName(){
         return name;
@@ -61,7 +65,8 @@ public class User extends Person{
     }
 
     public String toString(){
-        return "User [name=" + name + ", email=" + email + ", password=" + password + ", message=" + messages + "]";
+       
+        return name + Arrays.toString(messages) + ":";
     }
 
     
