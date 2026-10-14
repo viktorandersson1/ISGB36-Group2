@@ -4,8 +4,7 @@ public class ISGB36 {
         
         //Test Message
         Message m1 = new Message("m1", "This is a message!");
-        System.out.println(m1);
-
+        //System.out.println(m1);
         Message m2 = new Message("m2", "This is another message!");
 
         //Test User
@@ -13,7 +12,8 @@ public class ISGB36 {
         
 
         u1.addMessage(m1);
-        System.out.println(u1 + " :" + m1);
+        u1.addMessage(m2);
+        //System.out.println(u1 + " :" + m1);
 
         System.out.println(u1);
 

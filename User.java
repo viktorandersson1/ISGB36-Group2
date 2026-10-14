@@ -29,6 +29,8 @@ public class User extends Person{
     public Message viewAllMessage(){  // Has to return a Message []
         return null;
     }
+
+
     
     public String getName(){
         return name;
@@ -63,7 +65,7 @@ public class User extends Person{
     }
 
     public String toString(){
-        return "User [name=" + name + ", email=" + email + ", password=" + password + ", message=" + Arrays.toString(messages) + "]";
+        return name + Arrays.toString(messages) + ":";
     }
 
     
