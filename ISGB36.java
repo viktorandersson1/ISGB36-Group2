@@ -2,6 +2,14 @@ public class ISGB36 {
     
     public static void main(String[] args){
         
+        AppController controller = new AppController();
+        ConsoleUI ui = new ConsoleUI(controller);
+
+        ui.start();
+
+
+        /*
+        
         //Test Message
         Message m1 = new Message("m1", "This is a message!");
         System.out.println(m1);
@@ -13,7 +21,7 @@ public class ISGB36 {
         u1.addMessage(m1);
         System.out.println(u1 + " :" + m1);
 
-
+        */
 
        
     }
