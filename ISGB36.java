@@ -23,7 +23,7 @@ public class ISGB36 {
         u1.addMessage(m1);
         u2.addMessage(m2);
         //System.out.println(u1 + " :" + m1);
-
+        */
 
 
        

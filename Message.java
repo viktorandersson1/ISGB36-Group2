@@ -38,6 +38,6 @@ public class Message{
     }
 
     public String toString(){
-        return content + " " + date + "\n";
+        return messageId + ", " + content + ", " + date;
     }
 }

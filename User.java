@@ -66,7 +66,7 @@ public class User extends Person{
 
     public String toString(){
        
-        return name + Arrays.toString(messages) + ":";
+        return name + ", " + email + ", " + password + ", " + Arrays.toString(messages);
     }
 
     
