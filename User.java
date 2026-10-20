@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class User extends Person{
@@ -28,7 +29,7 @@ public class User extends Person{
 
     
     
-    public Message viewAllMessage(){  // Has to return a Message []
+    public Message viewAllMessage(){  // Has to return a ArrayList
         return null;
     }
 

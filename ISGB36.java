@@ -7,7 +7,8 @@ public class ISGB36 {
 
         ui.start();
 
-
+    }
+}
         /*
         
         //Test Message
@@ -25,8 +26,4 @@ public class ISGB36 {
         //System.out.println(u1 + " :" + m1);
         */
 
-*/
        
-    }
-
-}

@@ -38,9 +38,11 @@ public class AppController {
         if(myMessages == null || myMessages.length == 0){
             return "You haven't posted any messages";
         }else{
-            for(Message m: myMessages){
-                return m.toString();
+            String text = "";
+            for(Message m: allMessages){
+                text += m.toString() + "\n";
             }
+            return text;
         }
 
     }
@@ -80,14 +82,14 @@ public class AppController {
     }
 
     public String getAllMEssages(){
-        if(allMessages == null){
+        if(allMessages == null || allMessages.isEmpty()){
             return "No messages.";
         }
-        StringBuilder sb = new StringBuilder();
+        String text = "";
         for(Message m: allMessages){
-            sb.append(m.toString()).append("\n");
+           text = text + m.toString() + "\n";
         }
 
-        return sb.toString();
+        return text;
     }
 }

@@ -26,7 +26,7 @@ public class ConsoleUI {
                     showGuestMenu();
                     break;
                 case 2:
-                    showUserMenu();
+                    loginMenu();
                     break;
                 case 3:
                     exit = true;
