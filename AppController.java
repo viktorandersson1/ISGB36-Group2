@@ -31,14 +31,16 @@ public class AppController {
 
     public String getOwnMessages(){
         if(currentUser == null){
-            return "You dont login";
+            return "You are not signed in.";
         }
 
         Message[] myMessages = currentUser.getMessages();
         if(myMessages == null || myMessages.length == 0){
-            return "You dont post any message";
+            return "You haven't posted any messages";
         }else{
-            return currentUser.toStrMessages(myMessages);
+            for(Message m: myMessages){
+                return m.toString();
+            }
         }
 
     }
@@ -79,7 +81,7 @@ public class AppController {
 
     public String getAllMEssages(){
         if(allMessages == null){
-            return "No messages in the app";
+            return "No messages.";
         }
         StringBuilder sb = new StringBuilder();
         for(Message m: allMessages){
