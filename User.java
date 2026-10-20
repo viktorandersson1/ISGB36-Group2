@@ -25,6 +25,8 @@ public class User extends Person{
     }
 
     
+
+    
     
     public Message viewAllMessage(){  // Has to return a Message []
         return null;

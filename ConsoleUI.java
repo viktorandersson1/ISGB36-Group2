@@ -13,7 +13,7 @@ public class ConsoleUI {
         boolean exit = false;
 
         while(!exit){
-            System.out.println("Wellcome to chaterBox");
+            System.out.println("Wellcome to ChatterBox");
             System.out.println("1 - Guest");
             System.out.println("2 - User");
             System.out.println("3 - exit");
