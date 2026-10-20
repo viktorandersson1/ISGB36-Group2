@@ -14,7 +14,7 @@ public class ConsoleUI {
 
         while(!exit){
             System.out.println("Wellcome to chaterBox");
-            System.out.println("1 - Guest");
+            System.out.println("1 - Show all messages as Guest");
             System.out.println("2 - User");
             System.out.println("3 - exit");
             System.out.println("Choose one option");
@@ -40,7 +40,6 @@ public class ConsoleUI {
 
     public void showGuestMenu(){
         System.out.println("Menu of Guest");
-
         String messages = controller.getAllMEssages();
         System.out.println(messages);
 
