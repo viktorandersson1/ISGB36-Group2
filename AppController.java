@@ -51,7 +51,7 @@ public class AppController {
 
     public void postMessages (String content){
         if(currentUser != null){
-            Message newMessage = currentUser.writteMessage(content);
+            Message newMessage = currentUser.writeMessage(content);
             String realID = "M" + (Message.getAllMessages().length + 1);
             newMessage.setMessageId(realID);
 
