@@ -30,7 +30,15 @@ public class User extends Person{
         return null;
     }
 
+    public Message postMessage(){ // write and post message
+        return null;
+    }
 
+    public Message deleteMessage(){ // delete message
+        return null;
+    }
+
+    
     
     public String getName(){
         return name;
@@ -64,7 +72,7 @@ public class User extends Person{
         this.messages = messages;
     }
 
-    public String toString(){
+    public String toStringMessages(){
        
         return name + ", " + email + ", " + password + ", " + Arrays.toString(messages);
     }
