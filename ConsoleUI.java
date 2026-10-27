@@ -23,10 +23,10 @@ public class ConsoleUI {
 
             switch (option) {
                 case 1:
-                    showGuestMenu();
+                    displayGuestMenu();
                     break;
                 case 2:
-                    loginMenu();
+                    displayloginMenu();
                     break;
                 case 3:
                     exit = true;
@@ -38,12 +38,12 @@ public class ConsoleUI {
         }
     }
 
-    public void showGuestMenu(){
+    public void displayGuestMenu(){
         System.out.println("Menu of Guest");
         controller.showAllMEssages();
     }
 
-    public void loginMenu(){
+    public void displayloginMenu(){
         System.out.println("Please Enter your credentials");
         System.out.println("Email: ");
         String email = input.nextLine();
@@ -54,13 +54,13 @@ public class ConsoleUI {
         boolean isLogged = controller.login(email, pass);
 
         if(isLogged){
-            showUserMenu();
+            displayshowUserMenu();
         }else{
             System.out.println("Incorrect password");
         }
     }
 
-    public void showUserMenu(){
+    public void displayshowUserMenu(){
         boolean exit = false;
 
         while (!exit) {

@@ -45,12 +45,6 @@ public class User extends Person{
         return null;  //The delete is done by controller
     }
 
-
-
-
-
-
-
     public String getName(){
         return name;
     }
@@ -84,7 +78,6 @@ public class User extends Person{
     }
 
     public String toString(){
-       
         return name + ", " + emailAdress + ", " + password + ", " + Arrays.toString(messages);
     }
 
