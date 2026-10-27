@@ -4,11 +4,14 @@ import java.util.List;
 public class AppController {
     private User currentUser;
     private List<User> users;
-    private List<Message> allMessages;
+    private ConsoleUI view;
+
+    public void setView(ConsoleUI view){
+        this.view = view;
+    }
 
     public AppController(){
         users = new ArrayList<>();
-        allMessages = new ArrayList<>();
         currentUser = null;
 
         users.add(new User("Admin", "admin@admin.com", "1234"));
@@ -29,63 +32,52 @@ public class AppController {
         currentUser = null;
     }
 
-    public String getOwnMessages(){
+    public void showOwnMessages(){
         if(currentUser == null){
-            return "You dont login";
+            System.out.println("You are not signed in.");
+            return;
         }
 
-        Message[] myMessages = currentUser.getMessages();
-        if(myMessages == null || myMessages.length == 0){
-            return "You dont post any message";
-        }else{
-            return currentUser.toStrMessages(myMessages);
-        }
+        Message[] myMessages = currentUser.showOwnMessages();
+        view.displayMessages(myMessages);
 
     }
 
     public void postMessages (String content){
         if(currentUser != null){
-            String id = "M" + (allMessages.size() + 1);
-            Message newMessage = new Message(id, content);
+            Message newMessage = currentUser.writteMessage(content);
+            String realID = "M" + (Message.getAllMessages().length + 1);
+            newMessage.setMessageId(realID);
 
-            allMessages.add(newMessage);
-            currentUser.addMessage(newMessage);
+            Message.saveMessage(newMessage);
+            currentUser.postMessage(newMessage);
 
-            System.out.println("Post it!!");
+            System.out.println("Message posted!");
+        }else{
+            System.out.println("You must be logged in to post a Message");
         }
 
     }
 
     public void deleteMessage(String msjID){
         if(currentUser != null){
-            Message messageToRemove = null;
+            Message deletedMsg = currentUser.deleteMessage(msjID);
             
-            for (Message m: allMessages){
-                if(m.getMessageId().equals(msjID)){
-                    messageToRemove = m;
-                    break;
-                }
+            if(deletedMsg != null){
+                // If we found and eliminate, we eliminate also from the global arraymessages
+                Message.deleteMessage(msjID);
+                System.out.println("Message deleted successfully.");
+            } else {
+                System.out.println("Unable to find message or it is not yours.");
             }
-
-            if(messageToRemove != null){
-                allMessages.remove(messageToRemove);
-                System.out.println("Message deleted");
-            }else{
-                System.out.println("The message is not found");
-            }
-
+            
+        } else {
+            System.out.println("You must be logged in to delete a Message.");
         }
     }
 
-    public String getAllMEssages(){
-        if(allMessages == null){
-            return "No messages in the app";
-        }
-        StringBuilder sb = new StringBuilder();
-        for(Message m: allMessages){
-            sb.append(m.toString()).append("\n");
-        }
-
-        return sb.toString();
+    public void showAllMEssages(){
+        Message [] data = Message.getAllMessages();
+        view.displayMessages(data);
     }
 }

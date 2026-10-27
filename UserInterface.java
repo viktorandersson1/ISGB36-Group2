@@ -1,7 +1,6 @@
 public interface UserInterface extends Interface{
-    public Message deleteMessage();
-    public boolean checkSignedIn(boolean isSigned);
+    public void deleteMessage();
     public void postMessage();
-    public Message [] viewAllMessage();
-    public Message [] viewOwnMessages();
+    public void showllMessages(Message[] messages);
+    public void showOwnMessages();
 }

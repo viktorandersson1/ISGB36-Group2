@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 public class User extends Person{
     private String name;
-    private String email;
+    private String emailAdress;
     private String password;
     private Message[] messages;
 
@@ -13,33 +13,61 @@ public class User extends Person{
 
     public User(String name, String email, String password){
         this.name=name;
-        this.email=email;
+        this.emailAdress=email;
         this.password=password;
         messages = new Message[0];
     }
 
+    @Override 
+    public Message[] showAllMessages(){
+        return null;  //The controler do the operation
+    }
 
-    public void addMessage(Message m){
+    public boolean checkSignedIn(boolean isSignedIn){
+        return isSignedIn;
+    }
+    
+    public Message[] showOwnMessages(){
+        return this.messages;
+    }
+
+    public Message writteMessage(String content){
+        return new Message("TempID", content);
+    }
+    
+    public Message postMessage(Message m){
         messages = Arrays.copyOf(messages, messages.length+1);
         messages[messages.length-1] = m;
+        return m;
     }
 
-    
-    
-    public Message viewAllMessage(){  // Has to return a Message []
-        return null;
+    public Message deleteMessage(String messageID){
+        Message messageToRemove = null;
+        int indexToRemove = -1;
+        
+        // Search the message in usermessages
+        for (int i = 0; i < messages.length; i++) {
+            if (messages[i].getMessageId().equals(messageID)) {
+                messageToRemove = messages[i];
+                indexToRemove = i;
+                break;
+            }
+        }
+
+        // If we found we eliminate of usermessages
+        if (indexToRemove != -1) {
+            Message[] newArray = new Message[messages.length - 1];
+            int j = 0;
+            for (int i = 0; i < messages.length; i++) {
+                if (i != indexToRemove) {
+                    newArray[j++] = messages[i];
+                }
+            }
+            messages = newArray;
+        }
+        return messageToRemove; 
     }
 
-    public Message postMessage(){ // write and post message
-        return null;
-    }
-
-    public Message deleteMessage(){ // delete message
-        return null;
-    }
-
-    
-    
     public String getName(){
         return name;
     }
@@ -49,11 +77,11 @@ public class User extends Person{
     }
 
     public String getEmail(){
-        return email;
+        return emailAdress;
     }
 
     public void setEmail(String email){
-        this.email=email;
+        this.emailAdress=email;
     }
 
     public String getPassword(){
@@ -72,9 +100,8 @@ public class User extends Person{
         this.messages = messages;
     }
 
-    public String toStringMessages(){
-       
-        return name + ", " + email + ", " + password + ", " + Arrays.toString(messages);
+    public String toString(){
+        return name + ", " + emailAdress + ", " + password + ", " + Arrays.toString(messages);
     }
 
     

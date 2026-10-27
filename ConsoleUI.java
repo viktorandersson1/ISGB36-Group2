@@ -13,9 +13,9 @@ public class ConsoleUI {
         boolean exit = false;
 
         while(!exit){
-            System.out.println("Wellcome to chaterBox");
-            System.out.println("1 - Guest");
-            System.out.println("2 - User");
+            System.out.println("Wellcome to ChatterBox");
+            System.out.println("1 - Show all messages as Guest");
+            System.out.println("2 - Sign in as User");
             System.out.println("3 - exit");
             System.out.println("Choose one option");
 
@@ -23,10 +23,10 @@ public class ConsoleUI {
 
             switch (option) {
                 case 1:
-                    showGuestMenu();
+                    displayGuestMenu();
                     break;
                 case 2:
-                    showUserMenu();
+                    displayloginMenu();
                     break;
                 case 3:
                     exit = true;
@@ -38,15 +38,13 @@ public class ConsoleUI {
         }
     }
 
-    public void showGuestMenu(){
+    public void displayGuestMenu(){
         System.out.println("Menu of Guest");
-
-        String messages = controller.getAllMEssages();
-        System.out.println(messages);
-
+        controller.showAllMEssages();
     }
 
-    public void loginMenu(){
+    public void displayloginMenu(){
+        System.out.println("Please Enter your credentials");
         System.out.println("Email: ");
         String email = input.nextLine();
         
@@ -56,13 +54,13 @@ public class ConsoleUI {
         boolean isLogged = controller.login(email, pass);
 
         if(isLogged){
-            showUserMenu();
+            displayshowUserMenu();
         }else{
             System.out.println("Incorrect password");
         }
     }
 
-    public void showUserMenu(){
+    public void displayshowUserMenu(){
         boolean exit = false;
 
         while (!exit) {
@@ -78,10 +76,10 @@ public class ConsoleUI {
 
             switch (option) {
                 case 1:
-                    System.out.println(controller.getAllMEssages());
+                    controller.showAllMEssages();
                     break;
                 case 2:
-                    System.out.println(controller.getOwnMessages());
+                    controller.showOwnMessages();
                     break;
                 case 3:
                     System.out.println("Write a message you want to post");
@@ -101,6 +99,16 @@ public class ConsoleUI {
                     System.out.println("Invalid option");
                     break;
             }
+        }
+    }
+
+    public void displayMessages(Message[] messages){
+        if (messages == null || messages.length == 0) {
+            System.out.println("There is no messages.");
+            return;
+        }
+        for (Message m : messages) {
+            System.out.println(m.toString());
         }
     }
 }
