@@ -55,7 +55,7 @@ public class AppController {
             allMessages.add(newMessage);
             currentUser.addMessage(newMessage);
 
-            System.out.println("Post it!!");
+            System.out.println("Message posted!");
         }
 
     }
@@ -75,7 +75,7 @@ public class AppController {
                 allMessages.remove(messageToRemove);
                 System.out.println("Message deleted");
             }else{
-                System.out.println("The message is not found");
+                System.out.println("Unable to find message");
             }
 
         }
@@ -83,7 +83,7 @@ public class AppController {
 
     public String getAllMEssages(){
         if(allMessages == null || allMessages.isEmpty()){
-            return "No messages.";
+            return "No messages";
         }
         String text = "";
         for(Message m: allMessages){

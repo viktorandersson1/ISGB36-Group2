@@ -13,9 +13,9 @@ public class ConsoleUI {
         boolean exit = false;
 
         while(!exit){
-            System.out.println("Wellcome to chaterBox");
+            System.out.println("Wellcome to ChatterBox");
             System.out.println("1 - Show all messages as Guest");
-            System.out.println("2 - User");
+            System.out.println("2 - Sign in as User");
             System.out.println("3 - exit");
             System.out.println("Choose one option");
 
@@ -46,6 +46,7 @@ public class ConsoleUI {
     }
 
     public void loginMenu(){
+        System.out.println("Please Enter your credentials");
         System.out.println("Email: ");
         String email = input.nextLine();
         
