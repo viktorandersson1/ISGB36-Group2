@@ -4,7 +4,7 @@ import java.util.List;
 public class AppController {
     private User currentUser;
     private List<User> users;
-    private List<Message> allMessages;
+    private List<Message> allMessages; //Move to Guest class
 
     public AppController(){
         users = new ArrayList<>();
