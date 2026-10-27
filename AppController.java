@@ -4,11 +4,14 @@ import java.util.List;
 public class AppController {
     private User currentUser;
     private List<User> users;
-    private List<Message> allMessages; //Move to Guest class
+    private ConsoleUI view;
+
+    public void setView(ConsoleUI view){
+        this.view = view;
+    }
 
     public AppController(){
         users = new ArrayList<>();
-        allMessages = new ArrayList<>();
         currentUser = null;
 
         users.add(new User("Admin", "admin@admin.com", "1234"));
@@ -36,24 +39,17 @@ public class AppController {
         }
 
         Message[] myMessages = currentUser.showOwnMessages();
-        if(myMessages == null || myMessages.length == 0){
-            System.out.println("You haven't posted any messages");
-        }else{
-            for(Message m: allMessages){
-                System.out.println(m.toString());
-            }
-        }
+        view.displayMessages(myMessages);
 
     }
 
     public void postMessages (String content){
         if(currentUser != null){
-            Message newMessage = currentUser.writMessage(content);
-
-            String realID = "M" + (allMessages.size() + 1);
+            Message newMessage = currentUser.writteMessage(content);
+            String realID = "M" + (Message.getAllMessages().length + 1);
             newMessage.setMessageId(realID);
 
-            allMessages.add(newMessage);
+            Message.saveMessage(newMessage);
             currentUser.postMessage(newMessage);
 
             System.out.println("Message posted!");
@@ -65,48 +61,23 @@ public class AppController {
 
     public void deleteMessage(String msjID){
         if(currentUser != null){
-            Message messageToRemove = null;
+            Message deletedMsg = currentUser.deleteMessage(msjID);
             
-            for (Message m: allMessages){
-                if(m.getMessageId().equals(msjID)){
-                    messageToRemove = m;
-                    break;
-                }
+            if(deletedMsg != null){
+                // If we found and eliminate, we eliminate also from the global arraymessages
+                Message.deleteMessage(msjID);
+                System.out.println("Message deleted successfully.");
+            } else {
+                System.out.println("Unable to find message or it is not yours.");
             }
-
-            if(messageToRemove != null){
-                allMessages.remove(messageToRemove);
-
-                Message[] userMessages = currentUser.getMessages();
-                Message [] newArray = new Message[userMessages.length -1];
-                int index = 0;
-
-                for (Message m: userMessages){
-                    if(!m.getMessageId().equals(msjID)){
-                        if(index < newArray.length){
-                            newArray[index++] = m;
-                        }
-                    }
-                }
-                currentUser.setMessages(newArray);
-                currentUser.deleteMessage(msjID);
-                System.out.println("Message deleted");
-            }else{
-                System.out.println("Unable to find message");
-            }
-        }else{
+            
+        } else {
             System.out.println("You must be logged in to delete a Message.");
         }
     }
 
     public void showAllMEssages(){
-        if(allMessages == null || allMessages.isEmpty()){
-           System.out.println("No messages");
-           return;
-        }
-        
-        for(Message m: allMessages){
-           System.out.println(m.toString());
-        }
+        Message [] data = Message.getAllMessages();
+        view.displayMessages(data);
     }
 }

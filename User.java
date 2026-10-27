@@ -31,7 +31,7 @@ public class User extends Person{
         return this.messages;
     }
 
-    public Message writMessage(String content){
+    public Message writteMessage(String content){
         return new Message("TempID", content);
     }
     
@@ -42,7 +42,30 @@ public class User extends Person{
     }
 
     public Message deleteMessage(String messageID){
-        return null;  //The delete is done by controller
+        Message messageToRemove = null;
+        int indexToRemove = -1;
+        
+        // Search the message in usermessages
+        for (int i = 0; i < messages.length; i++) {
+            if (messages[i].getMessageId().equals(messageID)) {
+                messageToRemove = messages[i];
+                indexToRemove = i;
+                break;
+            }
+        }
+
+        // If we found we eliminate of usermessages
+        if (indexToRemove != -1) {
+            Message[] newArray = new Message[messages.length - 1];
+            int j = 0;
+            for (int i = 0; i < messages.length; i++) {
+                if (i != indexToRemove) {
+                    newArray[j++] = messages[i];
+                }
+            }
+            messages = newArray;
+        }
+        return messageToRemove; 
     }
 
     public String getName(){

@@ -101,4 +101,14 @@ public class ConsoleUI {
             }
         }
     }
+
+    public void displayMessages(Message[] messages){
+        if (messages == null || messages.length == 0) {
+            System.out.println("No hay mensajes.");
+            return;
+        }
+        for (Message m : messages) {
+            System.out.println(m.toString());
+        }
+    }
 }

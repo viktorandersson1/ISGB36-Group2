@@ -5,6 +5,7 @@ public class ISGB36 {
         AppController controller = new AppController();
         ConsoleUI ui = new ConsoleUI(controller);
 
+        controller.setView(ui);
         ui.start();
 
     }
@@ -24,6 +25,6 @@ public class ISGB36 {
         u1.addMessage(m1);
         u2.addMessage(m2);
         //System.out.println(u1 + " :" + m1);
-        */
+        */  
 
        
