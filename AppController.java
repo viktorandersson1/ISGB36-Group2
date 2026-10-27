@@ -29,33 +29,36 @@ public class AppController {
         currentUser = null;
     }
 
-    public String getOwnMessages(){
+    public void showOwnMessages(){
         if(currentUser == null){
-            return "You are not signed in.";
+            System.out.println("You are not signed in.");
+            return;
         }
 
-        Message[] myMessages = currentUser.getMessages();
+        Message[] myMessages = currentUser.showOwnMessages();
         if(myMessages == null || myMessages.length == 0){
-            return "You haven't posted any messages";
+            System.out.println("You haven't posted any messages");
         }else{
-            String text = "";
             for(Message m: allMessages){
-                text += m.toString() + "\n";
+                System.out.println(m.toString());
             }
-            return text;
         }
 
     }
 
     public void postMessages (String content){
         if(currentUser != null){
-            String id = "M" + (allMessages.size() + 1);
-            Message newMessage = new Message(id, content);
+            Message newMessage = currentUser.writMessage(content);
+
+            String realID = "M" + (allMessages.size() + 1);
+            newMessage.setMessageId(realID);
 
             allMessages.add(newMessage);
-            currentUser.addMessage(newMessage);
+            currentUser.postMessage(newMessage);
 
             System.out.println("Message posted!");
+        }else{
+            System.out.println("You must be logged in to post a Message");
         }
 
     }
@@ -73,23 +76,37 @@ public class AppController {
 
             if(messageToRemove != null){
                 allMessages.remove(messageToRemove);
+
+                Message[] userMessages = currentUser.getMessages();
+                Message [] newArray = new Message[userMessages.length -1];
+                int index = 0;
+
+                for (Message m: userMessages){
+                    if(!m.getMessageId().equals(msjID)){
+                        if(index < newArray.length){
+                            newArray[index++] = m;
+                        }
+                    }
+                }
+                currentUser.setMessages(newArray);
+                currentUser.deleteMessage(msjID);
                 System.out.println("Message deleted");
             }else{
                 System.out.println("Unable to find message");
             }
-
+        }else{
+            System.out.println("You must be logged in to delete a Message.");
         }
     }
 
-    public String getAllMEssages(){
+    public void showAllMEssages(){
         if(allMessages == null || allMessages.isEmpty()){
-            return "No messages";
+           System.out.println("No messages");
+           return;
         }
-        String text = "";
+        
         for(Message m: allMessages){
-           text = text + m.toString() + "\n";
+           System.out.println(m.toString());
         }
-
-        return text;
     }
 }

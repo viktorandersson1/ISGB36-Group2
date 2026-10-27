@@ -5,12 +5,12 @@ public class Message{
     //Creates values 
     private String messageId;
     private String content;
-    private Date date;
+    private Date publisherDate;
     
     public Message(String messageId, String content){
         setMessageId(messageId);
         setContent(content);
-        date = new Date();
+        publisherDate = new Date();
     }
 
     public String getMessageId(){
@@ -30,14 +30,14 @@ public class Message{
     }
 
     public Date getDate(){
-        return date;
+        return publisherDate;
     }
 
     public void setDate(Date date){
-        this.date = date;
+        this.publisherDate = date;
     }
 
     public String toString(){
-        return messageId + ", " + content + ", " + date;
+        return messageId + ", " + content + ", " + publisherDate;
     }
 }

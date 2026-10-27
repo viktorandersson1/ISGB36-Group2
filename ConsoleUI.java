@@ -40,9 +40,7 @@ public class ConsoleUI {
 
     public void showGuestMenu(){
         System.out.println("Menu of Guest");
-        String messages = controller.getAllMEssages();
-        System.out.println(messages);
-
+        controller.showAllMEssages();
     }
 
     public void loginMenu(){
@@ -78,10 +76,10 @@ public class ConsoleUI {
 
             switch (option) {
                 case 1:
-                    System.out.println(controller.getAllMEssages());
+                    controller.showAllMEssages();
                     break;
                 case 2:
-                    System.out.println(controller.getOwnMessages());
+                    controller.showOwnMessages();
                     break;
                 case 3:
                     System.out.println("Write a message you want to post");

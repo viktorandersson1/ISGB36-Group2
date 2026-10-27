@@ -3,7 +3,7 @@ import java.util.Arrays;
 
 public class User extends Person{
     private String name;
-    private String email;
+    private String emailAdress;
     private String password;
     private Message[] messages;
 
@@ -14,27 +14,44 @@ public class User extends Person{
 
     public User(String name, String email, String password){
         this.name=name;
-        this.email=email;
+        this.emailAdress=email;
         this.password=password;
         messages = new Message[0];
     }
 
+    @Override 
+    public Message[] showAllMessages(){
+        return null;  //The controler do the operation
+    }
 
-    public void addMessage(Message m){
+    public boolean checkSignedIn(boolean isSignedIn){
+        return isSignedIn;
+    }
+    
+    public Message[] showOwnMessages(){
+        return this.messages;
+    }
+
+    public Message writMessage(String content){
+        return new Message("TempID", content);
+    }
+    
+    public Message postMessage(Message m){
         messages = Arrays.copyOf(messages, messages.length+1);
         messages[messages.length-1] = m;
+        return m;
     }
 
-    
-
-    
-    
-    public Message viewAllMessage(){  // Has to return a ArrayList
-        return null;
+    public Message deleteMessage(String messageID){
+        return null;  //The delete is done by controller
     }
 
 
-    
+
+
+
+
+
     public String getName(){
         return name;
     }
@@ -44,11 +61,11 @@ public class User extends Person{
     }
 
     public String getEmail(){
-        return email;
+        return emailAdress;
     }
 
     public void setEmail(String email){
-        this.email=email;
+        this.emailAdress=email;
     }
 
     public String getPassword(){
@@ -69,7 +86,7 @@ public class User extends Person{
 
     public String toString(){
        
-        return name + ", " + email + ", " + password + ", " + Arrays.toString(messages);
+        return name + ", " + emailAdress + ", " + password + ", " + Arrays.toString(messages);
     }
 
     

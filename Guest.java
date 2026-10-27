@@ -1,5 +1,12 @@
 public class Guest extends Person{
-    public Message viewAllMessage(){  // Has to return a Message []
-        return null;
+    
+    @Override
+    public Message[] showAllMessages() {
+        return new Message[0];
     }
+
+    public boolean checkSignedIn(boolean isSignedIn){
+        return isSignedIn;
+    }
+
 }
