@@ -140,7 +140,7 @@ public class AppController {
 
         try{
             writer = new PrintWriter(new FileWriter(fn));
-            writer.println("MessageID\tContent\tAuthorEmail");
+            writer.println("MessageID\tContent\tAuthorEmail\tDate");
 
             for (User u: users){
                 Message[] userMgs =  u.showOwnMessages();
