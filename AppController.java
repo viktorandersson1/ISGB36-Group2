@@ -6,11 +6,13 @@ import java.util.List;
 import java.util.Scanner;
 import java.io.File;
 
+
 public class AppController {
     private User currentUser;
     private List<User> users;
     private ConsoleUI view;
 
+    // Claasss
     public void setView(ConsoleUI view){
         this.view = view;
     }
