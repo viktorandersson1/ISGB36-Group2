@@ -11,7 +11,7 @@ public class ConsoleUI {
 
     public void start(){
         boolean exit = false;
-
+ 
         while(!exit){
             System.out.println("Wellcome to ChatterBox");
             System.out.println("1 - Show all messages as Guest");

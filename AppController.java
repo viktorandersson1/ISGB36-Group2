@@ -144,7 +144,7 @@ public class AppController {
                 Message[] userMgs =  u.showOwnMessages();
                 if(userMgs != null){
                     for(Message m: userMgs){
-                        writer.println(m.getMessageId() + "\t" + m.getContent() + "\t" + u.getEmail());
+                        writer.println(m.getMessageId() + "\t" + m.getContent() + "\t" + u.getEmail() + "\t" + m.getDate());
                     }
                 }
             }
