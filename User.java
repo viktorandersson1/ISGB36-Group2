@@ -31,7 +31,7 @@ public class User extends Person{
         return this.messages;
     }
 
-    public Message writteMessage(String content){
+    public Message writeMessage(String content){
         return new Message("TempID", content);
     }
     
@@ -103,6 +103,8 @@ public class User extends Person{
     public String toString(){
         return name + ", " + emailAdress + ", " + password + ", " + Arrays.toString(messages);
     }
+
+
 
     
 
