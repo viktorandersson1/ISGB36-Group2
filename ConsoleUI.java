@@ -9,10 +9,10 @@ public class ConsoleUI {
         this.controller = controller;
     }
 
-    public void start(){
+    public void start() {
         boolean exit = false;
- 
-        while(!exit){
+
+        while (!exit) {
             System.out.println("Wellcome to ChatterBox");
             System.out.println("1 - Show all messages as Guest");
             System.out.println("2 - Sign in as User");
@@ -38,29 +38,28 @@ public class ConsoleUI {
         }
     }
 
-    public void displayGuestMenu(){
-        System.out.println("Menu of Guest");
+    public void displayGuestMenu() {
         controller.showAllMEssages();
     }
 
-    public void displayloginMenu(){
+    public void displayloginMenu() {
         System.out.println("Please Enter your credentials");
         System.out.println("Email: ");
         String email = input.nextLine();
-        
+
         System.out.println("Password: ");
         String pass = input.nextLine();
 
         boolean isLogged = controller.login(email, pass);
 
-        if(isLogged){
+        if (isLogged) {
             displayshowUserMenu();
-        }else{
+        } else {
             System.out.println("Incorrect password");
         }
     }
 
-    public void displayshowUserMenu(){
+    public void displayshowUserMenu() {
         boolean exit = false;
 
         while (!exit) {
@@ -82,12 +81,12 @@ public class ConsoleUI {
                     controller.showOwnMessages();
                     break;
                 case 3:
-                    System.out.println("Write a message you want to post");
+                    System.out.println("Write the message you want to post");
                     String m = input.nextLine();
                     controller.postMessages(m);
-                    break;   
+                    break;
                 case 4:
-                    System.out.println("Write the message you want to delete");
+                    System.out.println("Write the message ID you want to delete");
                     String eliminate = input.nextLine();
                     controller.deleteMessage(eliminate);
                     break;
@@ -102,7 +101,7 @@ public class ConsoleUI {
         }
     }
 
-    public void displayMessages(Message[] messages){
+    public void displayMessages(Message[] messages) {
         if (messages == null || messages.length == 0) {
             System.out.println("There are no messages.");
             return;
